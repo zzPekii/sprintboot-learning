@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.demo.common.Result;
+import com.example.demo.service.UserService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,8 +13,14 @@ import java.util.Map;
 @SpringBootApplication
 @RestController
 @RequestMapping("/index")
-@MapperScan("com.example.demo.mapper")
+
 public class DemoApplication {
+
+    private final UserService userService;
+
+    public DemoApplication(UserService userService) {
+        this.userService = userService;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);

@@ -3,6 +3,7 @@ package com.example.demo;
 import com.example.demo.entity.User;
 import com.example.demo.mapper.UserMapper;
 
+import com.example.demo.service.UserService;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,15 @@ class DemoApplicationTests {
 
     @Resource
     private UserMapper userMapper;
+
+    @Resource
+    private UserService userService;
+
+    @Test
+    void contextService() {
+        List<User> userList = userService.list();
+        userList.forEach(System.out::println);
+    }
 
     @Test
     void contextLoads() {
